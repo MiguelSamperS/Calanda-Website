@@ -111,7 +111,7 @@ export default function Page() {
         <div className="container grid md:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">Hablemos</h2>
-            <p className="text-slate-600 mb-6">Cuéntanos qué quieres lograr y te propondremos una ruta clara en 48 horas hábiles.</p>
+            <p className="text-slate-600 mb-6">¡Cuéntanos qué quieres lograr y te contáctaremos lo más pronto posible!.</p>
             <ul className="space-y-1 text-slate-700">
               <li>✉︎ <a href="mailto:info@calanda.com.co" className="underline">info@calanda.com.co</a></li>
               <li>🌐 <a href="https://www.calanda.com.co" className="underline">www.calanda.com.co</a></li>
