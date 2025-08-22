@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 :root {
+  /* Paleta corporativa Calanda */
   --bg: #ffffff;
   --fg: #0f172a;
+  --calanda-red: #D62828;
+  --calanda-dark: #1E1E1E;
+  --calanda-gray: #6B7280;
 }
 
 html, body {
@@ -15,26 +19,45 @@ body {
   color: var(--fg);
   background: var(--bg);
 }
-a { text-decoration: underline; }
-.hero-underline { text-decoration-color: #D62828; text-decoration-thickness: 4px; }
-.container { @apply max-w-6xl mx-auto px-4; }
-.section { @apply py-16 md:py-24; }
-.card { @apply rounded-2xl shadow border bg-white; }
 
-/* Paleta de marca */
-:root {
-  --brand-red: #D62828;
-  --brand-ink: #0F172A; /* títulos/oscuros */
-  --brand-gray: #475569; /* textos secundarios */
+/* Links y subrayados */
+a {
+  text-decoration: underline;
 }
 
-/* Botón primario consistente (rojo Calanda) */
-.btn-primary {
-  @apply inline-flex items-center justify-center px-5 py-3 rounded-2xl text-white no-underline;
-  background: var(--brand-red);
+.hero-underline {
+  text-decoration-color: var(--calanda-red);
+  text-decoration-thickness: 4px;
 }
-.btn-primary:hover { filter: brightness(0.95); }
 
-/* Títulos y enlaces con tono de marca */
-.h-title { color: var(--brand-ink); }
-.link { color: var(--brand-ink); text-decoration: underline; }
+/* Contenedor base */
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Secciones generales */
+.section {
+  @apply py-16 md:py-24;
+}
+
+/* Tarjetas */
+.card {
+  @apply rounded-2xl shadow border bg-white;
+}
+
+/* Colores de utilidades */
+.bg-calanda-red {
+  background-color: var(--calanda-red);
+}
+
+.text-calanda-red {
+  color: var(--calanda-red);
+}
+
+.bg-calanda-dark {
+  background-color: var(--calanda-dark);
+}
+
+.text-calanda-dark {
+  color: var(--calanda-dark);
+}
