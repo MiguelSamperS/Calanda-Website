@@ -6,22 +6,24 @@ export default function Page() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900">
       {/* Header */}
-      <header className="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200">
+      <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-slate-200">
         <div className="container py-3 flex items-center justify-between">
-          {/* LOGO CALANDA */}
-          <a href="/" className="flex items-center gap-3">
-            <img src="/logo-horizontal.png" alt="CALANDA" className="h-9 w-auto" />
-          </a>
-
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo-horizontal.png"
+              alt="Calanda"
+              className="h-14 md:h-20 w-auto" /* Logo mucho más grande */
+            />
+          </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#servicios" className="hover:opacity-80">Servicios</a>
-            <a href="#metodo" className="hover:opacity-80">Método</a>
-            <a href="#casos" className="hover:opacity-80">Casos</a>
-            <a href="#contacto" className="hover:opacity-80">Contacto</a>
+            <a href="#servicios" className="hover:text-calanda-red transition">Servicios</a>
+            <a href="#metodo" className="hover:text-calanda-red transition">Método</a>
+            <a href="#casos" className="hover:text-calanda-red transition">Casos</a>
+            <a href="#contacto" className="hover:text-calanda-red transition">Contacto</a>
           </nav>
-          <a href="#contacto" className="hidden md:inline-block underline">Hablemos</a>
+          <a href="#contacto" className="hidden md:inline-block underline text-calanda-red font-semibold">Hablemos</a>
         </div>
       </header>
 
@@ -35,8 +37,12 @@ export default function Page() {
             Narrativas, posicionamiento, <strong>incidencia</strong> y <strong>relacionamiento público</strong> para que las organizaciones sean escuchadas, creídas y respaldadas por quienes importan.
           </p>
           <div className="flex gap-3">
-            <a href="#servicios" className="px-5 py-3 rounded-2xl bg-calanda.red text-white no-underline">Ver servicios</a>
-            <a href="#contacto" className="inline-flex items-center gap-1 text-slate-700 font-medium underline">Agenda una llamada →</a>
+            <a href="#servicios" className="px-5 py-3 rounded-2xl bg-calanda-red text-white no-underline hover:opacity-90 transition">
+              Ver servicios
+            </a>
+            <a href="#contacto" className="inline-flex items-center gap-1 text-slate-700 font-medium underline hover:text-calanda-red transition">
+              Agenda una llamada →
+            </a>
           </div>
           <div className="flex flex-wrap gap-6 text-sm text-slate-500 pt-2">
             <div className="flex items-center gap-2">✓ Comunicación estratégica</div>
@@ -44,25 +50,23 @@ export default function Page() {
             <div className="flex items-center gap-2">✓ Relaciones institucionales</div>
           </div>
         </div>
-
-        {/* Imagen de apoyo (libre de derechos - Unsplash) */}
-        <div className="card overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&auto=format&fit=crop&w=1200"
-            alt="Trabajo en equipo: comunicación e incidencia"
-            className="w-full h-64 md:h-full object-cover"
-          />
+        <div className="card p-6 space-y-3 text-slate-700">
+          <h3 className="text-xl font-semibold text-calanda-red">Qué podemos lograr juntos</h3>
+          <p>• Alinear el propósito con una narrativa potente.</p>
+          <p>• Multiplicar el alcance con estrategia multicanal.</p>
+          <p>• Abrir puertas con relacionamiento estratégico.</p>
+          <p>• Medir resultados con indicadores claros (MEL).</p>
         </div>
       </section>
 
       {/* Servicios */}
       <section id="servicios" className="section bg-slate-50 border-y">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">Servicios</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">Servicios</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
               <div key={s.title} className="card p-6 hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold mb-3">{s.title}</h3>
+                <h3 className="text-xl font-semibold mb-3 text-calanda-red">{s.title}</h3>
                 <ul className="list-disc pl-5 space-y-1 text-slate-700">
                   {s.points.map((p, i) => <li key={i}>{p}</li>)}
                 </ul>
@@ -75,12 +79,12 @@ export default function Page() {
       {/* Método BRAVO */}
       <section id="metodo" className="section">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6">Método B.R.A.V.O.</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-calanda-dark">Método B.R.A.V.O.</h2>
           <div className="grid md:grid-cols-5 gap-4 text-slate-700">
             {bravo.map((b) => (
               <div key={b.k} className="card p-5">
                 <div className="text-sm tracking-widest text-slate-500">{b.k}</div>
-                <h3 className="font-semibold">{b.title}</h3>
+                <h3 className="font-semibold text-calanda-red">{b.title}</h3>
                 <p className="text-sm mt-2">{b.desc}</p>
               </div>
             ))}
@@ -91,11 +95,11 @@ export default function Page() {
       {/* Casos */}
       <section id="casos" className="section bg-slate-50 border-y">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">Casos de éxito</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">Casos de éxito</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {cases.map((c) => (
               <div key={c.title} className="card p-6">
-                <h3 className="text-xl font-semibold">{c.title}</h3>
+                <h3 className="text-xl font-semibold text-calanda-red">{c.title}</h3>
                 <p className="mt-2">{c.desc}</p>
                 <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
                   {c.bullets.map((b, i) => <li key={i}>{b}</li>)}
@@ -110,11 +114,11 @@ export default function Page() {
       <section id="contacto" className="section">
         <div className="container grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">Hablemos</h2>
-            <p className="text-slate-600 mb-6">¡Cuéntanos qué quieres lograr y te contáctaremos lo más pronto posible!.</p>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-calanda-dark">Hablemos</h2>
+            <p className="text-slate-600 mb-6">Cuéntanos qué quieres lograr y te propondremos una ruta clara en 48 horas hábiles.</p>
             <ul className="space-y-1 text-slate-700">
-              <li>✉︎ <a href="mailto:info@calanda.com.co" className="underline">info@calanda.com.co</a></li>
-              <li>🌐 <a href="https://www.calanda.com.co" className="underline">www.calanda.com.co</a></li>
+              <li>✉︎ info@calanda.com.co</li>
+              <li>🌐 www.calanda.com.co</li>
             </ul>
           </div>
           <div className="card p-6">
@@ -122,10 +126,10 @@ export default function Page() {
               <div className="p-6 rounded-xl bg-emerald-50 text-emerald-700 space-y-2">
                 <h3 className="text-xl font-semibold">¡Gracias por escribirnos!</h3>
                 <p>Recibimos tu mensaje y en menos de 48 horas hábiles te compartiremos una ruta BRAVO enfocada en comunicación, incidencia y relacionamiento.</p>
-                <p className="text-sm">Si es urgente (crisis o ventana regulatoria), escribe <strong>URGENTE</strong> a <a className="underline" href="mailto:info@calanda.com.co">info@calanda.com.co</a>.</p>
+                <p className="text-sm">Si es urgente (crisis o ventana regulatoria), escribe <strong>URGENTE</strong> a <a href="mailto:info@calanda.com.co">info@calanda.com.co</a>.</p>
                 <div className="mt-3 flex gap-3">
-                  <a className="px-4 py-2 rounded-xl bg-calanda.red text-white no-underline" href="#servicios">Ver servicios</a>
-                  <a className="px-4 py-2 rounded-xl bg-slate-900 text-white no-underline" href="mailto:info@calanda.com.co">Agendar llamada</a>
+                  <a className="px-4 py-2 rounded-xl bg-calanda-red text-white no-underline" href="#servicios">Ver servicios</a>
+                  <a className="px-4 py-2 rounded-xl bg-calanda-dark text-white no-underline" href="mailto:info@calanda.com.co">Agendar llamada</a>
                 </div>
               </div>
             ) : (
@@ -133,7 +137,9 @@ export default function Page() {
                 <input className="w-full border rounded-xl p-3" placeholder="Nombre" required />
                 <input className="w-full border rounded-xl p-3" type="email" placeholder="Correo" required />
                 <textarea className="w-full border rounded-xl p-3" rows={5} placeholder="¿En qué podemos ayudarte?" required />
-                <button className="w-full px-5 py-3 rounded-2xl bg-calanda.red text-white">Enviar</button>
+                <button className="w-full px-5 py-3 rounded-2xl bg-calanda-red text-white hover:opacity-90 transition">
+                  Enviar
+                </button>
               </form>
             )}
           </div>
