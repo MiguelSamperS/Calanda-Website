@@ -20,3 +20,21 @@ a { text-decoration: underline; }
 .container { @apply max-w-6xl mx-auto px-4; }
 .section { @apply py-16 md:py-24; }
 .card { @apply rounded-2xl shadow border bg-white; }
+
+/* Paleta de marca */
+:root {
+  --brand-red: #D62828;
+  --brand-ink: #0F172A; /* títulos/oscuros */
+  --brand-gray: #475569; /* textos secundarios */
+}
+
+/* Botón primario consistente (rojo Calanda) */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-5 py-3 rounded-2xl text-white no-underline;
+  background: var(--brand-red);
+}
+.btn-primary:hover { filter: brightness(0.95); }
+
+/* Títulos y enlaces con tono de marca */
+.h-title { color: var(--brand-ink); }
+.link { color: var(--brand-ink); text-decoration: underline; }
