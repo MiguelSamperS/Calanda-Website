@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "CALANDA — Comunicación, incidencia y estrategia",
   description: "Convertimos mensajes en poder e ideas en acción. Narrativas, posicionamiento, incidencia y relacionamiento público.",
+  icons: { icon: "/icon.png" },
   openGraph: {
     title: "CALANDA — Comunicación, incidencia y estrategia",
     description: "Narrativas, posicionamiento, incidencia y relacionamiento público.",
