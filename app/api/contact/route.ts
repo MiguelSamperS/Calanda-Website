@@ -1,4 +1,3 @@
-// app/api/contact/route.ts
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -10,7 +9,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: 'Missing fields' }, { status: 400 });
     }
 
-    // Sanitizar mínimo para el HTML
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY missing');
+      return NextResponse.json({ ok: false, error: 'Server not configured' }, { status: 500 });
+    }
+
     const esc = (s: string) =>
       String(s)
         .replace(/&/g, '&amp;')
@@ -19,11 +23,11 @@ export async function POST(req: Request) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(resendApiKey);
 
-    // Usa onresend.com mientras el dominio propio no esté verificado
+    // Usa onresend.com mientras tu dominio no esté Verified
     const FROM = 'Web Calanda <no-reply@calanda.onresend.com>';
-    // Cuando tu dominio quede Verified en Resend, cambia a:
+    // Cuando quede verificado:
     // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
 
     const html = `
@@ -35,25 +39,25 @@ export async function POST(req: Request) {
       </table>
     `;
 
-    const text = `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`;
-
-    const r = await resend.emails.send({
+    const resp = await resend.emails.send({
       from: FROM,
       to: ['info@calanda.com.co'],
       reply_to: email,
       subject: 'Nuevo contacto desde calanda.com.co',
       html,
-      text,
+      text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     });
 
-    if (!r || (r as any).error) {
-      console.error('Resend error:', (r as any).error);
-      return NextResponse.json({ ok: false }, { status: 502 });
+    // Resend responde { id } o { error }
+    // @ts-expect-error – el SDK puede tipar error distinto según versión
+    if (resp?.error) {
+      console.error('Resend error:', resp.error);
+      return NextResponse.json({ ok: false, error: 'Email provider error' }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (e) {
-    console.error(e);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    console.error('API /contact error:', e);
+    return NextResponse.json({ ok: false, error: 'Unexpected server error' }, { status: 500 });
   }
 }
