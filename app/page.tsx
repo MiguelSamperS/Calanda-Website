@@ -10,10 +10,11 @@ export default function Page() {
       {/* Header */}
       <header className="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200">
         <div className="container py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="size-9 rounded-2xl bg-calanda.dark text-white grid place-items-center font-bold">∑</div>
-            <span className="font-semibold tracking-tight">CALANDA</span>
-          </div>
+          {/* LOGO CALANDA */}
+          <a href="/" className="flex items-center gap-3">
+            <img src="/logo-horizontal.png" alt="CALANDA" className="h-9 w-auto" />
+          </a>
+
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#servicios" className="hover:opacity-80">Servicios</a>
             <a href="#metodo" className="hover:opacity-80">Método</a>
@@ -43,12 +44,14 @@ export default function Page() {
             <div className="flex items-center gap-2">✓ Relaciones institucionales</div>
           </div>
         </div>
-        <div className="card p-6 space-y-3 text-slate-700">
-          <h3 className="text-xl font-semibold">Qué podemos lograr juntos</h3>
-          <p>• Alinear el propósito con una narrativa potente.</p>
-          <p>• Multiplicar el alcance con estrategia multicanal.</p>
-          <p>• Abrir puertas con relacionamiento estratégico.</p>
-          <p>• Medir resultados con indicadores claros (MEL).</p>
+
+        {/* Imagen de apoyo (libre de derechos - Unsplash) */}
+        <div className="card overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&auto=format&fit=crop&w=1200"
+            alt="Trabajo en equipo: comunicación e incidencia"
+            className="w-full h-64 md:h-full object-cover"
+          />
         </div>
       </section>
 
@@ -88,7 +91,7 @@ export default function Page() {
       {/* Casos */}
       <section id="casos" className="section bg-slate-50 border-y">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">Casos de éxito (anónimos)</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10">Casos de éxito</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {cases.map((c) => (
               <div key={c.title} className="card p-6">
@@ -110,9 +113,8 @@ export default function Page() {
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">Hablemos</h2>
             <p className="text-slate-600 mb-6">Cuéntanos qué quieres lograr y te propondremos una ruta clara en 48 horas hábiles.</p>
             <ul className="space-y-1 text-slate-700">
-              <li>✉︎ info@calanda.com.co</li>
-              <li>☎︎ +57 318 318 3188</li>
-              <li>🌐 www.calanda.com.co</li>
+              <li>✉︎ <a href="mailto:info@calanda.com.co" className="underline">info@calanda.com.co</a></li>
+              <li>🌐 <a href="https://www.calanda.com.co" className="underline">www.calanda.com.co</a></li>
             </ul>
           </div>
           <div className="card p-6">
@@ -120,7 +122,7 @@ export default function Page() {
               <div className="p-6 rounded-xl bg-emerald-50 text-emerald-700 space-y-2">
                 <h3 className="text-xl font-semibold">¡Gracias por escribirnos!</h3>
                 <p>Recibimos tu mensaje y en menos de 48 horas hábiles te compartiremos una ruta BRAVO enfocada en comunicación, incidencia y relacionamiento.</p>
-                <p className="text-sm">Si es urgente (crisis o ventana regulatoria), escribe <strong>URGENTE</strong> a <a href="mailto:info@calanda.com.co">info@calanda.com.co</a>.</p>
+                <p className="text-sm">Si es urgente (crisis o ventana regulatoria), escribe <strong>URGENTE</strong> a <a className="underline" href="mailto:info@calanda.com.co">info@calanda.com.co</a>.</p>
                 <div className="mt-3 flex gap-3">
                   <a className="px-4 py-2 rounded-xl bg-calanda.red text-white no-underline" href="#servicios">Ver servicios</a>
                   <a className="px-4 py-2 rounded-xl bg-slate-900 text-white no-underline" href="mailto:info@calanda.com.co">Agendar llamada</a>
@@ -167,7 +169,7 @@ const services = [
   {
     title: "Relaciones institucionales y alianzas",
     points: [
-      "Mapeo de actores público‑privados",
+      "Mapeo de actores público-privados",
       "Agenda y gestión de reuniones",
       "Acompañamiento en eventos clave",
       "Construcción de alianzas estratégicas"
