@@ -46,6 +46,7 @@ export default function Page() {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#servicios" className="hover:text-calanda-red transition">Servicios</a>
             <a href="#metodo" className="hover:text-calanda-red transition">Método</a>
+            <a href="#por-que" className="hover:text-calanda-red transition">¿Por qué este equipo?</a>
             <a href="#casos" className="hover:text-calanda-red transition">Casos</a>
             <a href="#contacto" className="hover:text-calanda-red transition">Contacto</a>
           </nav>
@@ -140,6 +141,21 @@ export default function Page() {
               alt="Relaciones institucionales y alianzas"
               className="w-full h-64 md:h-full object-cover"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* ¿Por qué este equipo? */}
+      <section id="por-que" className="section">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-calanda-dark">¿Por qué este equipo?</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {whyUs.map((b) => (
+              <div key={b.t} className="card p-6">
+                <h3 className="text-xl font-semibold text-calanda-red">{b.t}</h3>
+                <p className="mt-2 text-slate-700">{b.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -345,4 +361,10 @@ const cases = [
       "KPIs y aprendizaje continuo (MEL)"
     ]
   }
+];
+
+const whyUs = [
+  { t: "Impacto medible", d: "KPIs claros y reportes que muestran avance, no solo actividad." },
+  { t: "Velocidad y seniority", d: "Equipo senior, respuesta rápida y cero curva de aprendizaje." },
+  { t: "Confidencialidad total", d: "Manejo responsable de información sensible y escenarios críticos." }
 ];
