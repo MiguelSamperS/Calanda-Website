@@ -34,12 +34,12 @@ export default function Page() {
       {/* Header */}
       <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-slate-200">
         <div className="container py-3 flex items-center justify-between">
-          {/* LOGO CALANDA MUY GRANDE */}
+          {/* LOGO CALANDA MUCHO MÁS GRANDE */}
           <a href="/" className="flex items-center gap-3">
             <img
               src="/logo-horizontal.png"
               alt="CALANDA"
-              className="h-16 md:h-24 w-auto"  /* ↑ más grande en desktop */
+              className="h-24 md:h-32 w-auto"
             />
           </a>
 
@@ -49,7 +49,9 @@ export default function Page() {
             <a href="#casos" className="hover:text-calanda-red transition">Casos</a>
             <a href="#contacto" className="hover:text-calanda-red transition">Contacto</a>
           </nav>
-          <a href="#contacto" className="hidden md:inline-block underline text-calanda-red font-semibold">Hablemos</a>
+          <a href="#contacto" className="hidden md:inline-block underline text-calanda-red font-semibold">
+            Hablemos
+          </a>
         </div>
       </header>
 
@@ -77,7 +79,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Imagen libre (Unsplash) */}
         <div className="card overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&auto=format&fit=crop&w=1400"
@@ -123,7 +124,10 @@ export default function Page() {
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 text-slate-700">
               {bravo.map((b) => (
                 <div key={b.k} className="card p-5">
-                  <div className="text-sm tracking-widest text-slate-500">{b.k}</div>
+                  {/* Letra BRAVO grande, bold y rojo distinto */}
+                  <div className="text-2xl md:text-3xl font-extrabold tracking-widest text-[#B91C1C]">
+                    {b.k}
+                  </div>
                   <h3 className="font-semibold text-calanda-red">{b.title}</h3>
                   <p className="text-sm mt-2">{b.desc}</p>
                 </div>
@@ -217,6 +221,14 @@ export default function Page() {
           <div>© {new Date().getFullYear()} CALANDA — Comunicación, incidencia y estrategia.</div>
         </div>
       </footer>
+
+      {/* CTA flotante móvil */}
+      <a
+        href="#contacto"
+        className="md:hidden fixed bottom-4 right-4 px-4 py-3 rounded-full bg-calanda-red text-white shadow-lg no-underline"
+      >
+        Hablemos
+      </a>
     </div>
   );
 }
@@ -302,7 +314,8 @@ const bravo = [
 
 const cases = [
   {
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&auto=format&fit=crop&w=1200",
+    // NUEVA imagen: prensa/micrófonos
+    img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&auto=format&fit=crop&w=1200",
     title: "Sector regulado y sensible",
     desc: "Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.",
     bullets: [
@@ -322,7 +335,8 @@ const cases = [
     ]
   },
   {
-    img: "https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&auto=format&fit=crop&w=1200",
+    // NUEVA imagen: analytics/marketing (no código)
+    img: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&auto=format&fit=crop&w=1200",
     title: "Comunicación de impacto",
     desc: "Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.",
     bullets: [
