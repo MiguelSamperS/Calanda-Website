@@ -151,18 +151,22 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ¿Por qué elegirnos? */}
+     {/* ¿Por qué elegirnos? */}
 <section className="section bg-slate-50 border-y">
   <div className="container">
     <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">
       ¿Por qué elegirnos?
     </h2>
     <div className="grid md:grid-cols-3 gap-6">
+      
       {/* Estrategia con propósito */}
       <div className="card p-6 hover:shadow-lg transition">
-        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
-          Estrategia con propósito
-        </h3>
+        <div className="flex items-center gap-3 mb-4">
+          <Target className="w-8 h-8 text-calanda-red" />
+          <h3 className="text-xl font-semibold text-calanda-red">
+            Estrategia con propósito
+          </h3>
+        </div>
         <p className="text-slate-700">
           No comunicamos por comunicar: cada mensaje que construimos responde a un objetivo claro y medible.
           Nuestra obsesión es generar impacto real.
@@ -171,9 +175,12 @@ export default function Page() {
 
       {/* Narrativas que abren puertas */}
       <div className="card p-6 hover:shadow-lg transition">
-        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
-          Narrativas que abren puertas
-        </h3>
+        <div className="flex items-center gap-3 mb-4">
+          <BookOpen className="w-8 h-8 text-calanda-red" />
+          <h3 className="text-xl font-semibold text-calanda-red">
+            Narrativas que abren puertas
+          </h3>
+        </div>
         <p className="text-slate-700">
           Sabemos cómo conectar con audiencias clave. Transformamos ideas complejas en mensajes que no solo se entienden,
           sino que movilizan y persuaden.
@@ -182,14 +189,18 @@ export default function Page() {
 
       {/* Relacionamiento que importa */}
       <div className="card p-6 hover:shadow-lg transition">
-        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
-          Relacionamiento que importa
-        </h3>
+        <div className="flex items-center gap-3 mb-4">
+          <Users className="w-8 h-8 text-calanda-red" />
+          <h3 className="text-xl font-semibold text-calanda-red">
+            Relacionamiento que importa
+          </h3>
+        </div>
         <p className="text-slate-700">
           Nuestra red de contactos en el sector público, privado y social es un activo que ponemos al servicio de cada cliente,
           para abrir caminos y generar resultados.
         </p>
       </div>
+
     </div>
   </div>
 </section>
