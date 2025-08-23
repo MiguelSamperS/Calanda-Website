@@ -63,7 +63,7 @@ export default function Page() {
             Convertimos <span className="hero-underline">mensajes</span> en poder e <span className="hero-underline">ideas</span> en acción
           </h1>
           <p className="text-lg text-slate-600">
-            Narrativas, posicionamiento, <strong>incidencia</strong> y <strong>relacionamiento público</strong> para que las organizaciones sean escuchadas, creídas y respaldadas por quienes importan.
+            Narrativas, posicionamiento, <strong>incidencia</strong> y <strong>relacionamiento estratégico</strong> para que las organizaciones sean escuchadas, creídas y respaldadas por tomadores de decisión y grupos de interés.
           </p>
           <div className="flex gap-3">
             <a href="#servicios" className="px-5 py-3 rounded-2xl bg-calanda-red text-white no-underline hover:opacity-90 transition">
@@ -75,8 +75,9 @@ export default function Page() {
           </div>
           <div className="flex flex-wrap gap-6 text-sm text-slate-500 pt-2">
             <div className="flex items-center gap-2">✓ Comunicación estratégica</div>
+            <div className="flex items-center gap-2">✓ Incidencia pública y política</div>
             <div className="flex items-center gap-2">✓ Free press y medios</div>
-            <div className="flex items-center gap-2">✓ Relaciones institucionales</div>
+            <div className="flex items-center gap-2">✓ Relacionamiento institucional</div>
           </div>
         </div>
 
@@ -107,9 +108,14 @@ export default function Page() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
               <div key={s.title} className="card p-6 hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold mb-3 text-calanda-red">{s.title}</h3>
+                <h3
+                  className="text-xl font-semibold mb-3 text-calanda-red"
+                  dangerouslySetInnerHTML={{ __html: s.title }}
+                  />
                 <ul className="list-disc pl-5 space-y-1 text-slate-700">
-                  {s.points.map((p, i) => <li key={i}>{p}</li>)}
+                  {s.points.map((p, i) => (
+                    <li key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                  ))}
                 </ul>
               </div>
             ))}
@@ -145,20 +151,48 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ¿Por qué este equipo? */}
-      <section id="por-que" className="section">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-calanda-dark">¿Por qué este equipo?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {whyUs.map((b) => (
-              <div key={b.t} className="card p-6">
-                <h3 className="text-xl font-semibold text-calanda-red">{b.t}</h3>
-                <p className="mt-2 text-slate-700">{b.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ¿Por qué elegirnos? */}
+<section className="section bg-slate-50 border-y">
+  <div className="container">
+    <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">
+      ¿Por qué elegirnos?
+    </h2>
+    <div className="grid md:grid-cols-3 gap-6">
+      {/* Estrategia con propósito */}
+      <div className="card p-6 hover:shadow-lg transition">
+        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
+          Estrategia con propósito
+        </h3>
+        <p className="text-slate-700">
+          No comunicamos por comunicar: cada mensaje que construimos responde a un objetivo claro y medible.
+          Nuestra obsesión es generar impacto real.
+        </p>
+      </div>
+
+      {/* Narrativas que abren puertas */}
+      <div className="card p-6 hover:shadow-lg transition">
+        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
+          Narrativas que abren puertas
+        </h3>
+        <p className="text-slate-700">
+          Sabemos cómo conectar con audiencias clave. Transformamos ideas complejas en mensajes que no solo se entienden,
+          sino que movilizan y persuaden.
+        </p>
+      </div>
+
+      {/* Relacionamiento que importa */}
+      <div className="card p-6 hover:shadow-lg transition">
+        <h3 className="text-xl font-semibold mb-3 text-calanda-red">
+          Relacionamiento que importa
+        </h3>
+        <p className="text-slate-700">
+          Nuestra red de contactos en el sector público, privado y social es un activo que ponemos al servicio de cada cliente,
+          para abrir caminos y generar resultados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Casos */}
       <section id="casos" className="section bg-slate-50 border-y">
@@ -260,12 +294,12 @@ const services = [
     ]
   },
   {
-    title: "Free press y medios",
+    title: "<em>Free press</em> y medios",
     points: [
       "Dossier y base de periodistas",
       "Gestión de entrevistas y apariciones",
       "Ruedas de prensa y vocería",
-      "Seguimiento y clipping con insights"
+      "Seguimiento y <em>clipping</em> con insights"
     ]
   },
   {
@@ -278,11 +312,11 @@ const services = [
     ]
   },
   {
-    title: "Storytelling corporativo y político",
+    title: "<em>Storytelling</em> corporativo y político",
     points: [
       "Guiones, discursos y presentaciones",
       "Piezas audiovisuales y materiales de difusión",
-      "Storydoing para mostrar el propósito en acción"
+      "<em>Storydoing</em> para mostrar el propósito en acción"
     ]
   },
   {
@@ -290,7 +324,7 @@ const services = [
     points: [
       "Sesiones personalizadas y simulaciones",
       "Protocolos de vocería para medios y crisis",
-      "Feedback en tiempo real"
+      "Capacitación en manejo de canales verbal y no verbal"
     ]
   },
   {
@@ -298,7 +332,7 @@ const services = [
     points: [
       "Plan de respuesta rápida",
       "Mensajes de control reputacional",
-      "War room y acompañamiento en tiempo real"
+      "<em>War room</em> y acompañamiento en tiempo real"
     ]
   },
   {
@@ -306,8 +340,8 @@ const services = [
     points: [
       "Auditoría digital y calendario de contenidos",
       "SEO/SEM y optimización de campañas",
-      "Social listening y reportes de métricas",
-      "Mejora continua"
+      "<em>Social listening</em> y reportes de métricas",
+      "Plan de mejora continua"
     ]
   },
   {
@@ -361,10 +395,4 @@ const cases = [
       "KPIs y aprendizaje continuo (MEL)"
     ]
   }
-];
-
-const whyUs = [
-  { t: "Impacto medible", d: "KPIs claros y reportes que muestran avance, no solo actividad." },
-  { t: "Velocidad y seniority", d: "Equipo senior, respuesta rápida y cero curva de aprendizaje." },
-  { t: "Confidencialidad total", d: "Manejo responsable de información sensible y escenarios críticos." }
 ];
