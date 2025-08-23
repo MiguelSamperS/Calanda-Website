@@ -31,9 +31,7 @@ export async function POST(req: Request) {
 
     // Usa el dominio temporal mientras tu dominio NO esté "Verified" en Resend
     const FROM = 'Web Calanda <onboarding@resend.dev>';
-    // Cuando verifiques el dominio, cambia a:
-    // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
-
+    
     const html = `
       <table style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; max-width:600px; color:#0f172a">
         <tr><td><h2>Nuevo mensaje desde la web</h2></td></tr>
@@ -45,7 +43,7 @@ export async function POST(req: Request) {
 
     const resp = (await resend.emails.send({
       from: FROM,
-      to: ['info@calanda.com.co'],
+      to: ['miguelsampers@gmail.com'],
       reply_to: email,
       subject: 'Nuevo contacto desde calanda.com.co',
       html,
