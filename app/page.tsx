@@ -215,7 +215,9 @@ export default function Page() {
           <div className="grid md:grid-cols-3 gap-6">
             {cases.map((c) => (
               <div key={c.title} className="card p-0 overflow-hidden">
-                <img src={c.img} alt="" className="w-full h-36 object-cover" />
+                <img src={c.img} alt=""className="w-full h-36 object-cover" loading="lazy" referrerPolicy="no-referrer" onError={(e) => 
+                { (e.currentTarget as HTMLImageElement).src = "https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200"; 
+                 // fallback genérico }}/>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-calanda-red">{c.title}</h3>
                   <p className="mt-2">{c.desc}</p>
@@ -393,7 +395,7 @@ const bravo = [
 const cases = [
   {
     // Laboratorio / industria regulada
-    img: "https://images.unsplash.com/photo-1581092334513-6c8b1a588d0c?q=80&auto=format&fit=crop&w=1200",
+    img: "https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200",
     title: "Sector regulado y sensible",
     desc: "Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.",
     bullets: [
