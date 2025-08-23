@@ -1,3 +1,4 @@
+// app/api/contact/route.ts
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -28,9 +29,9 @@ export async function POST(req: Request) {
 
     const resend = new Resend(resendApiKey);
 
-    // Usa el dominio temporal mientras tu dominio no esté "Verified" en Resend
+    // Usa el dominio temporal mientras tu dominio NO esté "Verified" en Resend
     const FROM = 'Web Calanda <no-reply@calanda.onresend.com>';
-    // Cuando verifiques el dominio en Resend, cambia a:
+    // Cuando verifiques el dominio, cambia a:
     // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
 
     const html = `
@@ -61,5 +62,4 @@ export async function POST(req: Request) {
     console.error('API /contact error:', e);
     return NextResponse.json({ ok: false, error: 'Unexpected server error' }, { status: 500 });
   }
-}
 }
