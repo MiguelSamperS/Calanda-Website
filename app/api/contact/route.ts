@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-type ResendResult =
-  | { id: string }
-  | { error: unknown };
+type ResendResult = { id: string } | { error: unknown };
 
 export async function POST(req: Request) {
   try {
@@ -19,7 +17,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: 'Server not configured' }, { status: 500 });
     }
 
-    // Sanitizar básico para HTML del correo
+    // Sanitizar básico para el HTML del correo
     const esc = (s: string) =>
       String(s)
         .replace(/&/g, '&amp;')
@@ -30,9 +28,9 @@ export async function POST(req: Request) {
 
     const resend = new Resend(resendApiKey);
 
-    // Usa dominio temporal mientras no esté verificado tu dominio
+    // Usa el dominio temporal mientras tu dominio no esté "Verified" en Resend
     const FROM = 'Web Calanda <no-reply@calanda.onresend.com>';
-    // Cuando Resend marque Verified tu dominio:
+    // Cuando verifiques el dominio en Resend, cambia a:
     // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
 
     const html = `
@@ -64,5 +62,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'Unexpected server error' }, { status: 500 });
   }
 }
-  }
 }
