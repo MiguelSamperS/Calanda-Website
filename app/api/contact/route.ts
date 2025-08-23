@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+type ResendResult =
+  | { id: string }
+  | { error: unknown };
+
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
@@ -15,6 +19,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: 'Server not configured' }, { status: 500 });
     }
 
+    // Sanitizar básico para HTML del correo
     const esc = (s: string) =>
       String(s)
         .replace(/&/g, '&amp;')
@@ -25,9 +30,9 @@ export async function POST(req: Request) {
 
     const resend = new Resend(resendApiKey);
 
-    // Usa onresend.com mientras tu dominio no esté Verified
+    // Usa dominio temporal mientras no esté verificado tu dominio
     const FROM = 'Web Calanda <no-reply@calanda.onresend.com>';
-    // Cuando quede verificado:
+    // Cuando Resend marque Verified tu dominio:
     // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
 
     const html = `
@@ -39,18 +44,16 @@ export async function POST(req: Request) {
       </table>
     `;
 
-    const resp = await resend.emails.send({
+    const resp = (await resend.emails.send({
       from: FROM,
       to: ['info@calanda.com.co'],
       reply_to: email,
       subject: 'Nuevo contacto desde calanda.com.co',
       html,
       text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
-    });
+    })) as ResendResult;
 
-    // Resend responde { id } o { error }
-    // @ts-expect-error – el SDK puede tipar error distinto según versión
-    if (resp?.error) {
+    if ('error' in resp && resp.error) {
       console.error('Resend error:', resp.error);
       return NextResponse.json({ ok: false, error: 'Email provider error' }, { status: 502 });
     }
@@ -59,5 +62,7 @@ export async function POST(req: Request) {
   } catch (e) {
     console.error('API /contact error:', e);
     return NextResponse.json({ ok: false, error: 'Unexpected server error' }, { status: 500 });
+  }
+}
   }
 }
