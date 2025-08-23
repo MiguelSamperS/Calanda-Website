@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Target, BookOpen, Users } from 'lucide-react';
 
 export default function Page() {
   const [sent, setSent] = useState<null | 'ok' | 'err'>(null);
@@ -56,7 +57,7 @@ export default function Page() {
         </div>
       </header>
 
-      {/* Hero con imagen */}
+      {/* Hero con imagen (más potente) */}
       <section className="container section grid md:grid-cols-2 gap-10 items-center">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -76,15 +77,15 @@ export default function Page() {
           <div className="flex flex-wrap gap-6 text-sm text-slate-500 pt-2">
             <div className="flex items-center gap-2">✓ Comunicación estratégica</div>
             <div className="flex items-center gap-2">✓ Incidencia pública y política</div>
-            <div className="flex items-center gap-2">✓ Free press y medios</div>
+            <div className="flex items-center gap-2">✓ <em>Free press</em> y medios</div>
             <div className="flex items-center gap-2">✓ Relacionamiento institucional</div>
           </div>
         </div>
 
         <div className="card overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&auto=format&fit=crop&w=1400"
-            alt="Trabajo en equipo: comunicación e incidencia"
+            src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&auto=format&fit=crop&w=1400"
+            alt="Voz en acción: movilización ciudadana con megáfono"
             className="w-full h-64 md:h-full object-cover"
           />
         </div>
@@ -111,7 +112,7 @@ export default function Page() {
                 <h3
                   className="text-xl font-semibold mb-3 text-calanda-red"
                   dangerouslySetInnerHTML={{ __html: s.title }}
-                  />
+                />
                 <ul className="list-disc pl-5 space-y-1 text-slate-700">
                   {s.points.map((p, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: p }} />
@@ -131,7 +132,6 @@ export default function Page() {
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 text-slate-700">
               {bravo.map((b) => (
                 <div key={b.k} className="card p-5">
-                  {/* Letra BRAVO grande, bold y rojo distinto */}
                   <div className="text-2xl md:text-3xl font-extrabold tracking-widest text-[#B91C1C]">
                     {b.k}
                   </div>
@@ -151,59 +151,57 @@ export default function Page() {
         </div>
       </section>
 
-     {/* ¿Por qué elegirnos? */}
-<section className="section bg-slate-50 border-y">
-  <div className="container">
-    <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">
-      ¿Por qué elegirnos?
-    </h2>
-    <div className="grid md:grid-cols-3 gap-6">
-      
-      {/* Estrategia con propósito */}
-      <div className="card p-6 hover:shadow-lg transition">
-        <div className="flex items-center gap-3 mb-4">
-          <Target className="w-8 h-8 text-calanda-red" />
-          <h3 className="text-xl font-semibold text-calanda-red">
-            Estrategia con propósito
-          </h3>
-        </div>
-        <p className="text-slate-700">
-          No comunicamos por comunicar: cada mensaje que construimos responde a un objetivo claro y medible.
-          Nuestra obsesión es generar impacto real.
-        </p>
-      </div>
+      {/* ¿Por qué elegirnos? */}
+      <section id="por-que" className="section bg-slate-50 border-y">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">
+            ¿Por qué elegirnos?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Estrategia con propósito */}
+            <div className="card p-6 hover:shadow-lg transition">
+              <div className="flex items-center gap-3 mb-4">
+                <Target className="w-8 h-8 text-calanda-red" />
+                <h3 className="text-xl font-semibold text-calanda-red">
+                  Estrategia con propósito
+                </h3>
+              </div>
+              <p className="text-slate-700">
+                No comunicamos por comunicar: cada mensaje que construimos responde a un objetivo claro y medible.
+                Nuestra obsesión es generar impacto real.
+              </p>
+            </div>
 
-      {/* Narrativas que abren puertas */}
-      <div className="card p-6 hover:shadow-lg transition">
-        <div className="flex items-center gap-3 mb-4">
-          <BookOpen className="w-8 h-8 text-calanda-red" />
-          <h3 className="text-xl font-semibold text-calanda-red">
-            Narrativas que abren puertas
-          </h3>
-        </div>
-        <p className="text-slate-700">
-          Sabemos cómo conectar con audiencias clave. Transformamos ideas complejas en mensajes que no solo se entienden,
-          sino que movilizan y persuaden.
-        </p>
-      </div>
+            {/* Narrativas que abren puertas */}
+            <div className="card p-6 hover:shadow-lg transition">
+              <div className="flex items-center gap-3 mb-4">
+                <BookOpen className="w-8 h-8 text-calanda-red" />
+                <h3 className="text-xl font-semibold text-calanda-red">
+                  Narrativas que abren puertas
+                </h3>
+              </div>
+              <p className="text-slate-700">
+                Sabemos cómo conectar con audiencias clave. Transformamos ideas complejas en mensajes que no solo se entienden,
+                sino que movilizan y persuaden.
+              </p>
+            </div>
 
-      {/* Relacionamiento que importa */}
-      <div className="card p-6 hover:shadow-lg transition">
-        <div className="flex items-center gap-3 mb-4">
-          <Users className="w-8 h-8 text-calanda-red" />
-          <h3 className="text-xl font-semibold text-calanda-red">
-            Relacionamiento que importa
-          </h3>
+            {/* Relacionamiento que importa */}
+            <div className="card p-6 hover:shadow-lg transition">
+              <div className="flex items-center gap-3 mb-4">
+                <Users className="w-8 h-8 text-calanda-red" />
+                <h3 className="text-xl font-semibold text-calanda-red">
+                  Relacionamiento que importa
+                </h3>
+              </div>
+              <p className="text-slate-700">
+                Nuestra red de contactos en el sector público, privado y social es un activo que ponemos al servicio de cada cliente,
+                para abrir caminos y generar resultados.
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="text-slate-700">
-          Nuestra red de contactos en el sector público, privado y social es un activo que ponemos al servicio de cada cliente,
-          para abrir caminos y generar resultados.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Casos */}
       <section id="casos" className="section bg-slate-50 border-y">
@@ -221,7 +219,9 @@ export default function Page() {
                   <h3 className="text-xl font-semibold text-calanda-red">{c.title}</h3>
                   <p className="mt-2">{c.desc}</p>
                   <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
-                    {c.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                    {c.bullets.map((b, i) => (
+                      <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -310,7 +310,7 @@ const services = [
       "Dossier y base de periodistas",
       "Gestión de entrevistas y apariciones",
       "Ruedas de prensa y vocería",
-      "Seguimiento y <em>clipping</em> con insights"
+      "Seguimiento y <em>clipping</em> con <em>insights</em>"
     ]
   },
   {
@@ -375,12 +375,11 @@ const bravo = [
 
 const cases = [
   {
-    // NUEVA imagen: prensa/micrófonos
     img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&auto=format&fit=crop&w=1200",
     title: "Sector regulado y sensible",
     desc: "Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.",
     bullets: [
-      "Narrativa y free press en medios clave",
+      "Narrativa y <em>free press</em> en medios clave",
       "Entrenamiento de voceros para temas sensibles",
       "Visibilidad sostenida e invitaciones a foros sectoriales"
     ]
@@ -396,13 +395,12 @@ const cases = [
     ]
   },
   {
-    // NUEVA imagen: analytics/marketing (no código)
     img: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&auto=format&fit=crop&w=1200",
     title: "Comunicación de impacto",
     desc: "Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.",
     bullets: [
       "Mensajes simples y poderosos",
-      "Storytelling + storydoing",
+      "<em>Storytelling</em> + <em>storydoing</em>",
       "KPIs y aprendizaje continuo (MEL)"
     ]
   }
