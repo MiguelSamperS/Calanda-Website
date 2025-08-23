@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Target, BookOpen, Users } from 'lucide-react';
+// Íconos (lucide-react)
+import {
+  Target,
+  BookOpen,
+  Users,
+  Compass,
+  Newspaper,
+  Landmark,
+  PenTool,
+  Mic,
+  ShieldAlert,
+  BarChart3,
+  Film,
+} from 'lucide-react';
+
+type IconType = React.ComponentType<{ className?: string }>;
 
 export default function Page() {
   const [sent, setSent] = useState<null | 'ok' | 'err'>(null);
@@ -35,13 +50,9 @@ export default function Page() {
       {/* Header */}
       <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-slate-200">
         <div className="container py-3 flex items-center justify-between">
-          {/* LOGO CALANDA MUCHO MÁS GRANDE */}
+          {/* LOGO CALANDA (grande) */}
           <a href="/" className="flex items-center gap-3">
-            <img
-              src="/logo-horizontal.png"
-              alt="CALANDA"
-              className="h-24 md:h-32 w-auto"
-            />
+            <img src="/logo-horizontal.png" alt="CALANDA" className="h-24 md:h-32 w-auto" />
           </a>
 
           <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -57,14 +68,15 @@ export default function Page() {
         </div>
       </header>
 
-      {/* Hero con imagen (más potente) */}
+      {/* Hero con imagen conceptual */}
       <section className="container section grid md:grid-cols-2 gap-10 items-center">
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Convertimos <span className="hero-underline">mensajes</span> en poder e <span className="hero-underline">ideas</span> en acción
           </h1>
           <p className="text-lg text-slate-600">
-            Narrativas, posicionamiento, <strong>incidencia</strong> y <strong>relacionamiento estratégico</strong> para que las organizaciones sean escuchadas, creídas y respaldadas por tomadores de decisión y grupos de interés.
+            Narrativas, posicionamiento, <strong>incidencia</strong> y <strong>relacionamiento estratégico</strong> para que las organizaciones
+            sean escuchadas, creídas y respaldadas por tomadores de decisión y grupos de interés.
           </p>
           <div className="flex gap-3">
             <a href="#servicios" className="px-5 py-3 rounded-2xl bg-calanda-red text-white no-underline hover:opacity-90 transition">
@@ -83,15 +95,16 @@ export default function Page() {
         </div>
 
         <div className="card overflow-hidden">
+          {/* Imagen conceptual: hilo rojo/conexión/propósito */}
           <img
-            src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&auto=format&fit=crop&w=1400"
-            alt="Voz en acción: movilización ciudadana con megáfono"
+            src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&auto=format&fit=crop&w=1400"
+            alt="Conexiones que mueven ideas: propósito en acción"
             className="w-full h-64 md:h-full object-cover"
           />
         </div>
       </section>
 
-      {/* Banda visual con imagen */}
+      {/* Banda visual */}
       <section className="container -mt-8">
         <div className="rounded-2xl overflow-hidden shadow">
           <img
@@ -102,17 +115,20 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Servicios */}
+      {/* Servicios con íconos */}
       <section id="servicios" className="section bg-slate-50 border-y">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">Servicios</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
+            {servicesWithIcons.map((s) => (
               <div key={s.title} className="card p-6 hover:shadow-lg transition">
-                <h3
-                  className="text-xl font-semibold mb-3 text-calanda-red"
-                  dangerouslySetInnerHTML={{ __html: s.title }}
-                />
+                <div className="flex items-center gap-3 mb-3">
+                  <s.icon className="w-6 h-6 text-calanda-red" />
+                  <h3
+                    className="text-xl font-semibold text-calanda-red"
+                    dangerouslySetInnerHTML={{ __html: s.title }}
+                  />
+                </div>
                 <ul className="list-disc pl-5 space-y-1 text-slate-700">
                   {s.points.map((p, i) => (
                     <li key={i} dangerouslySetInnerHTML={{ __html: p }} />
@@ -132,9 +148,7 @@ export default function Page() {
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 text-slate-700">
               {bravo.map((b) => (
                 <div key={b.k} className="card p-5">
-                  <div className="text-2xl md:text-3xl font-extrabold tracking-widest text-[#B91C1C]">
-                    {b.k}
-                  </div>
+                  <div className="text-2xl md:text-3xl font-extrabold tracking-widest text-[#B91C1C]">{b.k}</div>
                   <h3 className="font-semibold text-calanda-red">{b.title}</h3>
                   <p className="text-sm mt-2">{b.desc}</p>
                 </div>
@@ -154,49 +168,40 @@ export default function Page() {
       {/* ¿Por qué elegirnos? */}
       <section id="por-que" className="section bg-slate-50 border-y">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">
-            ¿Por qué elegirnos?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-calanda-dark">¿Por qué elegirnos?</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Estrategia con propósito */}
+            {/* Estrategia */}
             <div className="card p-6 hover:shadow-lg transition">
               <div className="flex items-center gap-3 mb-4">
                 <Target className="w-8 h-8 text-calanda-red" />
-                <h3 className="text-xl font-semibold text-calanda-red">
-                  Estrategia con propósito
-                </h3>
+                <h3 className="text-xl font-semibold text-calanda-red">Estrategia con propósito</h3>
               </div>
               <p className="text-slate-700">
-                No comunicamos por comunicar: cada mensaje que construimos responde a un objetivo claro y medible.
-                Nuestra obsesión es generar impacto real.
+                No comunicamos por comunicar: cada mensaje responde a un objetivo claro y medible. Nuestra obsesión es
+                generar impacto real.
               </p>
             </div>
 
-            {/* Narrativas que abren puertas */}
+            {/* Narrativas */}
             <div className="card p-6 hover:shadow-lg transition">
               <div className="flex items-center gap-3 mb-4">
                 <BookOpen className="w-8 h-8 text-calanda-red" />
-                <h3 className="text-xl font-semibold text-calanda-red">
-                  Narrativas que abren puertas
-                </h3>
+                <h3 className="text-xl font-semibold text-calanda-red">Narrativas que abren puertas</h3>
               </div>
               <p className="text-slate-700">
-                Sabemos cómo conectar con audiencias clave. Transformamos ideas complejas en mensajes que no solo se entienden,
-                sino que movilizan y persuaden.
+                Conectamos con audiencias clave. Traducimos complejidad en mensajes que se entienden, movilizan y persuaden.
               </p>
             </div>
 
-            {/* Relacionamiento que importa */}
+            {/* Relacionamiento */}
             <div className="card p-6 hover:shadow-lg transition">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="w-8 h-8 text-calanda-red" />
-                <h3 className="text-xl font-semibold text-calanda-red">
-                  Relacionamiento que importa
-                </h3>
+                <h3 className="text-xl font-semibold text-calanda-red">Relacionamiento que importa</h3>
               </div>
               <p className="text-slate-700">
-                Nuestra red de contactos en el sector público, privado y social es un activo que ponemos al servicio de cada cliente,
-                para abrir caminos y generar resultados.
+                Nuestra red en el sector público, privado y social se pone al servicio de cada cliente para abrir caminos
+                y generar resultados.
               </p>
             </div>
           </div>
@@ -210,18 +215,12 @@ export default function Page() {
           <div className="grid md:grid-cols-3 gap-6">
             {cases.map((c) => (
               <div key={c.title} className="card p-0 overflow-hidden">
-                <img
-                  src={c.img}
-                  alt=""
-                  className="w-full h-36 object-cover"
-                />
+                <img src={c.img} alt="" className="w-full h-36 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-calanda-red">{c.title}</h3>
                   <p className="mt-2">{c.desc}</p>
                   <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
-                    {c.bullets.map((b, i) => (
-                      <li key={i} dangerouslySetInnerHTML={{ __html: b }} />
-                    ))}
+                    {c.bullets.map((b, i) => <li key={i}>{b}</li>)}
                   </ul>
                 </div>
               </div>
@@ -275,7 +274,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Footer con logo */}
+      {/* Footer */}
       <footer className="py-10 border-t text-center text-sm text-slate-500">
         <div className="container flex flex-col items-center gap-3">
           <img src="/logo-symbol.png" alt="CALANDA" className="h-10 w-auto opacity-80" />
@@ -294,15 +293,17 @@ export default function Page() {
   );
 }
 
-const services = [
+/* ---------- Datos ---------- */
+
+const servicesBase = [
   {
     title: "Estrategia y posicionamiento",
     points: [
       "Diagnóstico de comunicación y propósito",
       "Narrativa central y mensajes clave",
       "Plan de acción en medios y redes",
-      "Indicadores de impacto (MEL)"
-    ]
+      "Indicadores de impacto (MEL)",
+    ],
   },
   {
     title: "<em>Free press</em> y medios",
@@ -310,8 +311,8 @@ const services = [
       "Dossier y base de periodistas",
       "Gestión de entrevistas y apariciones",
       "Ruedas de prensa y vocería",
-      "Seguimiento y <em>clipping</em> con <em>insights</em>"
-    ]
+      "Seguimiento y <em>clipping</em> con insights",
+    ],
   },
   {
     title: "Relaciones institucionales y alianzas",
@@ -319,32 +320,32 @@ const services = [
       "Mapeo de actores público-privados",
       "Agenda y gestión de reuniones",
       "Acompañamiento en eventos clave",
-      "Construcción de alianzas estratégicas"
-    ]
+      "Construcción de alianzas estratégicas",
+    ],
   },
   {
     title: "<em>Storytelling</em> corporativo y político",
     points: [
       "Guiones, discursos y presentaciones",
       "Piezas audiovisuales y materiales de difusión",
-      "<em>Storydoing</em> para mostrar el propósito en acción"
-    ]
+      "<em>Storydoing</em> para mostrar el propósito en acción",
+    ],
   },
   {
     title: "Formación y entrenamiento de voceros",
     points: [
       "Sesiones personalizadas y simulaciones",
       "Protocolos de vocería para medios y crisis",
-      "Capacitación en manejo de canales verbal y no verbal"
-    ]
+      "Capacitación en manejo de canales verbal y no verbal",
+    ],
   },
   {
     title: "Manejo de crisis y escenarios críticos",
     points: [
       "Plan de respuesta rápida",
       "Mensajes de control reputacional",
-      "<em>War room</em> y acompañamiento en tiempo real"
-    ]
+      "<em>War room</em> y acompañamiento en tiempo real",
+    ],
   },
   {
     title: "Marketing digital",
@@ -352,37 +353,54 @@ const services = [
       "Auditoría digital y calendario de contenidos",
       "SEO/SEM y optimización de campañas",
       "<em>Social listening</em> y reportes de métricas",
-      "Plan de mejora continua"
-    ]
+      "Plan de mejora continua",
+    ],
   },
   {
     title: "Producción audiovisual",
     points: [
       "Videos institucionales y documentales",
       "Cápsulas para redes y animaciones",
-      "Edición profesional y banco de imágenes"
-    ]
-  }
+      "Edición profesional y banco de imágenes",
+    ],
+  },
 ];
+
+const iconMap: IconType[] = [
+  Compass,      // Estrategia y posicionamiento
+  Newspaper,    // Free press y medios
+  Landmark,     // Relaciones institucionales
+  PenTool,      // Storytelling corporativo y político
+  Mic,          // Formación de voceros
+  ShieldAlert,  // Manejo de crisis
+  BarChart3,    // Marketing digital
+  Film,         // Producción audiovisual
+];
+
+const servicesWithIcons = servicesBase.map((s, i) => ({
+  ...s,
+  icon: iconMap[i] ?? Compass,
+}));
 
 const bravo = [
   { k: "B", title: "Base", desc: "Diagnóstico profundo y definición del propósito de marca." },
   { k: "R", title: "Relato", desc: "Narrativa y mensajes clave con storytelling y storydoing." },
   { k: "A", title: "Alcance", desc: "Estrategia multicanal y activación de vocerías y alianzas." },
   { k: "V", title: "Visibilidad", desc: "Presencia frente a públicos clave y optimización digital." },
-  { k: "O", title: "Oportunidad", desc: "Transferencia de capacidades para sostenibilidad y escala." }
+  { k: "O", title: "Oportunidad", desc: "Transferencia de capacidades para sostenibilidad y escala." },
 ];
 
 const cases = [
   {
-    img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&auto=format&fit=crop&w=1200",
+    // Laboratorio / industria regulada
+    img: "https://images.unsplash.com/photo-1581092334513-6c8b1a588d0c?q=80&auto=format&fit=crop&w=1200",
     title: "Sector regulado y sensible",
     desc: "Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.",
     bullets: [
-      "Narrativa y <em>free press</em> en medios clave",
+      "Narrativa y <em>free press</em> en medios clave".replace(/<[^>]*>/g, ''), // visibles como texto
       "Entrenamiento de voceros para temas sensibles",
-      "Visibilidad sostenida e invitaciones a foros sectoriales"
-    ]
+      "Visibilidad sostenida e invitaciones a foros sectoriales",
+    ],
   },
   {
     img: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&auto=format&fit=crop&w=1200",
@@ -391,17 +409,18 @@ const cases = [
     bullets: [
       "Mapeo de actores y agenda de alto nivel",
       "Gestión de reuniones y seguimiento",
-      "Resultados medibles en corto plazo"
-    ]
+      "Resultados medibles en corto plazo",
+    ],
   },
   {
-    img: "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&auto=format&fit=crop&w=1200",
+    // Megáfono en la calle / comunicación pública
+    img: "https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&auto=format&fit=crop&w=1200",
     title: "Comunicación de impacto",
     desc: "Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.",
     bullets: [
       "Mensajes simples y poderosos",
-      "<em>Storytelling</em> + <em>storydoing</em>",
-      "KPIs y aprendizaje continuo (MEL)"
-    ]
-  }
+      "Storytelling + storydoing",
+      "KPIs y aprendizaje continuo (MEL)",
+    ],
+  },
 ];
