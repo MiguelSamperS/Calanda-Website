@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     const resend = new Resend(resendApiKey);
 
     // Usa el dominio temporal mientras tu dominio NO esté "Verified" en Resend
-    const FROM = 'Web Calanda <no-reply@calanda.onresend.com>';
+    const FROM = 'Web Calanda <onboarding@resend.dev>';
     // Cuando verifiques el dominio, cambia a:
     // const FROM = 'Web Calanda <no-reply@calanda.com.co>';
 
