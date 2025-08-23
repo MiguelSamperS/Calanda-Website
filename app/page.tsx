@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 // Íconos (lucide-react)
 import {
   Target,
@@ -30,6 +31,7 @@ export default function Page() {
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
     };
+
     try {
       setLoading(true);
       const r = await fetch('/api/contact', {
@@ -44,6 +46,9 @@ export default function Page() {
       setLoading(false);
     }
   }
+
+  const FALLBACK_CASE_IMG =
+    'https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200';
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -95,7 +100,7 @@ export default function Page() {
         </div>
 
         <div className="card overflow-hidden">
-          {/* Imagen conceptual: hilo rojo/conexión/propósito */}
+          {/* Conceptual: hilo rojo/conexión/propósito */}
           <img
             src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&auto=format&fit=crop&w=1400"
             alt="Conexiones que mueven ideas: propósito en acción"
@@ -215,14 +220,23 @@ export default function Page() {
           <div className="grid md:grid-cols-3 gap-6">
             {cases.map((c) => (
               <div key={c.title} className="card p-0 overflow-hidden">
-                <img src={c.img} alt=""className="w-full h-36 object-cover" loading="lazy" referrerPolicy="no-referrer" onError={(e) => 
-                { (e.currentTarget as HTMLImageElement).src = "https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200"; 
-                 // fallback genérico }}/>
+                <img
+                  src={c.img}
+                  alt=""
+                  className="w-full h-36 object-cover"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = FALLBACK_CASE_IMG;
+                  }}
+                />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-calanda-red">{c.title}</h3>
                   <p className="mt-2">{c.desc}</p>
                   <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
-                    {c.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                    {c.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -299,71 +313,71 @@ export default function Page() {
 
 const servicesBase = [
   {
-    title: "Estrategia y posicionamiento",
+    title: 'Estrategia y posicionamiento',
     points: [
-      "Diagnóstico de comunicación y propósito",
-      "Narrativa central y mensajes clave",
-      "Plan de acción en medios y redes",
-      "Indicadores de impacto (MEL)",
+      'Diagnóstico de comunicación y propósito',
+      'Narrativa central y mensajes clave',
+      'Plan de acción en medios y redes',
+      'Indicadores de impacto (MEL)',
     ],
   },
   {
-    title: "<em>Free press</em> y medios",
+    title: '<em>Free press</em> y medios',
     points: [
-      "Dossier y base de periodistas",
-      "Gestión de entrevistas y apariciones",
-      "Ruedas de prensa y vocería",
-      "Seguimiento y <em>clipping</em> con insights",
+      'Dossier y base de periodistas',
+      'Gestión de entrevistas y apariciones',
+      'Ruedas de prensa y vocería',
+      'Seguimiento y <em>clipping</em> con insights',
     ],
   },
   {
-    title: "Relaciones institucionales y alianzas",
+    title: 'Relaciones institucionales y alianzas',
     points: [
-      "Mapeo de actores público-privados",
-      "Agenda y gestión de reuniones",
-      "Acompañamiento en eventos clave",
-      "Construcción de alianzas estratégicas",
+      'Mapeo de actores público-privados',
+      'Agenda y gestión de reuniones',
+      'Acompañamiento en eventos clave',
+      'Construcción de alianzas estratégicas',
     ],
   },
   {
-    title: "<em>Storytelling</em> corporativo y político",
+    title: '<em>Storytelling</em> corporativo y político',
     points: [
-      "Guiones, discursos y presentaciones",
-      "Piezas audiovisuales y materiales de difusión",
-      "<em>Storydoing</em> para mostrar el propósito en acción",
+      'Guiones, discursos y presentaciones',
+      'Piezas audiovisuales y materiales de difusión',
+      '<em>Storydoing</em> para mostrar el propósito en acción',
     ],
   },
   {
-    title: "Formación y entrenamiento de voceros",
+    title: 'Formación y entrenamiento de voceros',
     points: [
-      "Sesiones personalizadas y simulaciones",
-      "Protocolos de vocería para medios y crisis",
-      "Capacitación en manejo de canales verbal y no verbal",
+      'Sesiones personalizadas y simulaciones',
+      'Protocolos de vocería para medios y crisis',
+      'Capacitación en manejo de canales verbal y no verbal',
     ],
   },
   {
-    title: "Manejo de crisis y escenarios críticos",
+    title: 'Manejo de crisis y escenarios críticos',
     points: [
-      "Plan de respuesta rápida",
-      "Mensajes de control reputacional",
-      "<em>War room</em> y acompañamiento en tiempo real",
+      'Plan de respuesta rápida',
+      'Mensajes de control reputacional',
+      '<em>War room</em> y acompañamiento en tiempo real',
     ],
   },
   {
-    title: "Marketing digital",
+    title: 'Marketing digital',
     points: [
-      "Auditoría digital y calendario de contenidos",
-      "SEO/SEM y optimización de campañas",
-      "<em>Social listening</em> y reportes de métricas",
-      "Plan de mejora continua",
+      'Auditoría digital y calendario de contenidos',
+      'SEO/SEM y optimización de campañas',
+      '<em>Social listening</em> y reportes de métricas',
+      'Plan de mejora continua',
     ],
   },
   {
-    title: "Producción audiovisual",
+    title: 'Producción audiovisual',
     points: [
-      "Videos institucionales y documentales",
-      "Cápsulas para redes y animaciones",
-      "Edición profesional y banco de imágenes",
+      'Videos institucionales y documentales',
+      'Cápsulas para redes y animaciones',
+      'Edición profesional y banco de imágenes',
     ],
   },
 ];
@@ -372,11 +386,11 @@ const iconMap: IconType[] = [
   Compass,      // Estrategia y posicionamiento
   Newspaper,    // Free press y medios
   Landmark,     // Relaciones institucionales
-  PenTool,      // Storytelling corporativo y político
-  Mic,          // Formación de voceros
-  ShieldAlert,  // Manejo de crisis
-  BarChart3,    // Marketing digital
-  Film,         // Producción audiovisual
+  PenTool,      // Storytelling
+  Mic,          // Voceros
+  ShieldAlert,  // Crisis
+  BarChart3,    // Marketing
+  Film,         // Audiovisual
 ];
 
 const servicesWithIcons = servicesBase.map((s, i) => ({
@@ -385,44 +399,44 @@ const servicesWithIcons = servicesBase.map((s, i) => ({
 }));
 
 const bravo = [
-  { k: "B", title: "Base", desc: "Diagnóstico profundo y definición del propósito de marca." },
-  { k: "R", title: "Relato", desc: "Narrativa y mensajes clave con storytelling y storydoing." },
-  { k: "A", title: "Alcance", desc: "Estrategia multicanal y activación de vocerías y alianzas." },
-  { k: "V", title: "Visibilidad", desc: "Presencia frente a públicos clave y optimización digital." },
-  { k: "O", title: "Oportunidad", desc: "Transferencia de capacidades para sostenibilidad y escala." },
+  { k: 'B', title: 'Base', desc: 'Diagnóstico profundo y definición del propósito de marca.' },
+  { k: 'R', title: 'Relato', desc: 'Narrativa y mensajes clave con storytelling y storydoing.' },
+  { k: 'A', title: 'Alcance', desc: 'Estrategia multicanal y activación de vocerías y alianzas.' },
+  { k: 'V', title: 'Visibilidad', desc: 'Presencia frente a públicos clave y optimización digital.' },
+  { k: 'O', title: 'Oportunidad', desc: 'Transferencia de capacidades para sostenibilidad y escala.' },
 ];
 
 const cases = [
   {
     // Laboratorio / industria regulada
-    img: "https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200",
-    title: "Sector regulado y sensible",
-    desc: "Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.",
+    img: 'https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200',
+    title: 'Sector regulado y sensible',
+    desc: 'Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.',
     bullets: [
-      "Narrativa y <em>free press</em> en medios clave".replace(/<[^>]*>/g, ''), // visibles como texto
-      "Entrenamiento de voceros para temas sensibles",
-      "Visibilidad sostenida e invitaciones a foros sectoriales",
+      'Narrativa y free press en medios clave',
+      'Entrenamiento de voceros para temas sensibles',
+      'Visibilidad sostenida e invitaciones a foros sectoriales',
     ],
   },
   {
-    img: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&auto=format&fit=crop&w=1200",
-    title: "Alianzas multi-actor",
-    desc: "Diseño de relacionamiento para conectar empresa, gobierno y sociedad civil alrededor de un propósito compartido.",
+    img: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&auto=format&fit=crop&w=1200',
+    title: 'Alianzas multi-actor',
+    desc: 'Diseño de relacionamiento para conectar empresa, gobierno y sociedad civil alrededor de un propósito compartido.',
     bullets: [
-      "Mapeo de actores y agenda de alto nivel",
-      "Gestión de reuniones y seguimiento",
-      "Resultados medibles en corto plazo",
+      'Mapeo de actores y agenda de alto nivel',
+      'Gestión de reuniones y seguimiento',
+      'Resultados medibles en corto plazo',
     ],
   },
   {
     // Megáfono en la calle / comunicación pública
-    img: "https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&auto=format&fit=crop&w=1200",
-    title: "Comunicación de impacto",
-    desc: "Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.",
+    img: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&auto=format&fit=crop&w=1200',
+    title: 'Comunicación de impacto',
+    desc: 'Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.',
     bullets: [
-      "Mensajes simples y poderosos",
-      "Storytelling + storydoing",
-      "KPIs y aprendizaje continuo (MEL)",
+      'Mensajes simples y poderosos',
+      'Storytelling + storydoing',
+      'KPIs y aprendizaje continuo (MEL)',
     ],
   },
 ];
