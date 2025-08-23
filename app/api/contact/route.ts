@@ -43,14 +43,12 @@ export async function POST(req: Request) {
 
     const resp = (await resend.emails.send({
       from: FROM,
-      to: ['info@calanda.com.co', 'miguelsampers@gmail.com'],
+      to: ['info@calanda.com.co'],
       reply_to: email,
       subject: 'Nuevo contacto desde calanda.com.co',
       html,
       text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     })) as ResendResult;
-
-    console.log('Resend response:', resp);
 
     if ('error' in resp && resp.error) {
       console.error('Resend error:', resp.error);
