@@ -48,7 +48,7 @@ export default function Page() {
   }
 
   const FALLBACK_CASE_IMG =
-    'https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200';
+    '/Gobos.jpg';
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -102,7 +102,7 @@ export default function Page() {
         <div className="card overflow-hidden">
           {/* Conceptual: hilo rojo/conexión/propósito */}
           <img
-            src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&auto=format&fit=crop&w=1400"
+            src="/Megafono.jpg"
             alt="Conexiones que mueven ideas: propósito en acción"
             className="w-full h-64 md:h-full object-cover"
           />
@@ -113,7 +113,7 @@ export default function Page() {
       <section className="container -mt-8">
         <div className="rounded-2xl overflow-hidden shadow">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&auto=format&fit=crop&w=1600"
+            src="/Idea.jpg"
             alt="Taller de estrategia y vocería"
             className="w-full h-56 md:h-72 object-cover"
           />
@@ -409,7 +409,7 @@ const bravo = [
 const cases = [
   {
     // Laboratorio / industria regulada
-    img: 'https://images.unsplash.com/photo-1581091215367-59ab6b321caa?q=80&auto=format&fit=crop&w=1200',
+    img: '/Cannabis.jpg',
     title: 'Sector regulado y sensible',
     desc: 'Posicionamiento de compañía con altos estándares, trazabilidad y aporte económico ante autoridades y opinión pública.',
     bullets: [
@@ -419,7 +419,7 @@ const cases = [
     ],
   },
   {
-    img: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&auto=format&fit=crop&w=1200',
+    img: '/Tablero.jpg',
     title: 'Alianzas multi-actor',
     desc: 'Diseño de relacionamiento para conectar empresa, gobierno y sociedad civil alrededor de un propósito compartido.',
     bullets: [
@@ -430,7 +430,7 @@ const cases = [
   },
   {
     // Megáfono en la calle / comunicación pública
-    img: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&auto=format&fit=crop&w=1200',
+    img: '/Comunicacion.jpg',
     title: 'Comunicación de impacto',
     desc: 'Campaña multicanal para traducir proyectos complejos en resultados comprensibles y memorables.',
     bullets: [
