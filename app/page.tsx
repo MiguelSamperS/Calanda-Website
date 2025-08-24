@@ -68,7 +68,7 @@ export default function Page() {
             <a href="#contacto" className="hover:text-calanda-red transition">Contacto</a>
           </nav>
           <a href="#contacto" className="hidden md:inline-block underline text-calanda-red font-semibold">
-            ¡Hablemos!
+            Hablemos
           </a>
         </div>
       </header>
@@ -249,7 +249,7 @@ export default function Page() {
       <section id="contacto" className="section">
         <div className="container grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-calanda-dark">Hablemos</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-calanda-dark">¡Hablemos!</h2>
             <p className="text-slate-600 mb-6">
               Cuéntanos qué quieres lograr y te propondremos una ruta clara en 48 horas hábiles.
             </p>
