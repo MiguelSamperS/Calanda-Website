@@ -102,7 +102,7 @@ export default function Page() {
         <div className="card overflow-hidden">
           {/* Conceptual: hilo rojo/conexión/propósito */}
           <img
-            src="/Megafono.jpg"
+            src="/Megafonos.jpg"
             alt="Conexiones que mueven ideas: propósito en acción"
             className="w-full h-64 md:h-full object-cover"
           />
