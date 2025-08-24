@@ -68,7 +68,7 @@ export default function Page() {
             <a href="#contacto" className="hover:text-calanda-red transition">Contacto</a>
           </nav>
           <a href="#contacto" className="hidden md:inline-block underline text-calanda-red font-semibold">
-            Hablemos
+            ¡Hablemos!
           </a>
         </div>
       </header>
