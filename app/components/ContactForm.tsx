@@ -55,21 +55,21 @@ export default function ContactForm() {
     <form className="space-y-4" onSubmit={onSubmit}>
       <input
         name="name"
-        className="w-full border border-ink/15 rounded p-3.5 bg-white focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
+        className="w-full border border-ink/15 rounded p-3.5 bg-white text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
         placeholder="Nombre"
         required
       />
       <input
         name="email"
         type="email"
-        className="w-full border border-ink/15 rounded p-3.5 bg-white focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
+        className="w-full border border-ink/15 rounded p-3.5 bg-white text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
         placeholder="Correo"
         required
       />
       <textarea
         name="message"
         rows={5}
-        className="w-full border border-ink/15 rounded p-3.5 bg-white focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
+        className="w-full border border-ink/15 rounded p-3.5 bg-white text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-calanda-red/40"
         placeholder="¿En qué podemos ayudarte?"
         required
       />
