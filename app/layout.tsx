@@ -1,73 +1,80 @@
 import "./styles/globals.css";
 import type { Metadata, Viewport } from "next";
+import { Spectral, Inter } from "next/font/google";
 
-// ✅ Viewport para móviles
+const spectral = Spectral({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+// Viewport para móviles (themeColor va aquí, no en metadata)
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  viewportFit: "cover", // aprovecha toda el área en iPhone con notch
+  viewportFit: "cover",
+  themeColor: "#0F1C2B",
 };
 
-// ✅ Metadatos del sitio
+// Metadatos del sitio
 export const metadata: Metadata = {
   metadataBase: new URL("https://calanda.com.co"),
-  title: "CALANDA — Comunicación, incidencia y estrategia",
+  title: "Calanda · Estrategia de Licencia Social para Operar",
   description:
-    "Convertimos mensajes en poder e ideas en acción. Narrativas, posicionamiento, incidencia y relacionamiento público.",
-  applicationName: "CALANDA",
+    "Calanda diseña, construye y protege la Licencia Social para Operar de empresas e instituciones en territorios complejos de Colombia. Método ACUERDO: rigor estratégico para construir confianza.",
+  applicationName: "Calanda",
   keywords: [
-    "comunicación estratégica",
-    "incidencia",
-    "relacionamiento",
-    "free press",
-    "storytelling",
+    "licencia social para operar",
+    "gobernanza territorial",
+    "negociación colaborativa",
+    "relacionamiento estratégico",
+    "asuntos públicos",
+    "ESG social",
     "Colombia",
   ],
-  authors: [{ name: "CALANDA" }],
-  creator: "CALANDA",
-  publisher: "CALANDA",
+  authors: [{ name: "Calanda Consultores y Estrategia" }],
+  creator: "Calanda Consultores y Estrategia",
+  publisher: "Calanda Consultores y Estrategia",
 
-  // Favicons / PWA básicos (asegúrate de tener estos archivos en /public)
   icons: {
     icon: [
       { url: "/favicon.ico" },
       { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/icon.png", sizes: "512x512" }],
     shortcut: ["/favicon.ico"],
   },
   manifest: "/site.webmanifest",
 
-  // Colores del navegador
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#111827" },
-  ],
-
-  // Open Graph
   openGraph: {
-    title: "CALANDA — Comunicación, incidencia y estrategia",
+    title: "Calanda · Estrategia de Licencia Social para Operar",
     description:
-      "Narrativas, posicionamiento, incidencia y relacionamiento público.",
+      "Diseñamos, construimos y protegemos la licencia social que permite operar con legitimidad, confianza y acuerdos duraderos.",
     url: "https://calanda.com.co",
-    siteName: "CALANDA",
+    siteName: "Calanda",
     images: [
-      // idealmente sube /og.jpg a /public y usa esa ruta
-      { url: "/og.jpg", width: 1200, height: 630, alt: "CALANDA" },
+      { url: "/hero-territorio-dialogo.jpg", width: 1536, height: 1024, alt: "Calanda — Estrategia de Licencia Social para Operar" },
     ],
     locale: "es_CO",
     type: "website",
   },
 
-  // Twitter Cards
   twitter: {
     card: "summary_large_image",
-    title: "CALANDA — Comunicación, incidencia y estrategia",
+    title: "Calanda · Estrategia de Licencia Social para Operar",
     description:
-      "Narrativas, posicionamiento, incidencia y relacionamiento público.",
-    images: ["/og.jpg"], // misma imagen de OG
-    creator: "@calanda", // opcional si tienen cuenta
+      "Diseñamos, construimos y protegemos la licencia social que permite operar con legitimidad, confianza y acuerdos duraderos.",
+    images: ["/hero-territorio-dialogo.jpg"],
   },
 };
 
@@ -77,11 +84,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      {/* 
-        Next.js añadirá <meta name="viewport"...> desde `export const viewport` 
-      */}
-      <body className="min-h-screen bg-white text-slate-900 antialiased">
+    <html lang="es" className={`${spectral.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-bone text-ink antialiased font-sans">
         {children}
       </body>
     </html>
